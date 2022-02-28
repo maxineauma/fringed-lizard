@@ -7,7 +7,7 @@ const Home = () => {
     return (
         <>
             <Navigation />
-            <Container style={{ margin: "3rem" }}>
+            <Container>
                 <div className="bg-light p-5 rounded-lg m-3">
                     <h1 className="display-4">Fringed Lizard</h1>
                     <p className="lead">Welcome to the Project Time Tracker!</p>

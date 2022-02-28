@@ -5,27 +5,40 @@
 
 - [ ] React frontend
     - [x] Home page
-    - [x] Login page -- redirects when logged in.
-    - [x] Registration page -- redirects when logged in.
+    - [x] Login page
+    - [x] Registration page
         - [x] Password security
-    - [x] localStorage logged in or not
-    - [ ] Entries viewer/management page, by day
-    - [ ] Entry creation page, with timer (optional: manual)
+    - [x] Projects assigned to you
+    - [x] Entries viewer/management page
     - [ ] Admin control panel
-        - [ ] Add, edit, delete users
-        - [ ] Add, edit clients
-        - [ ] Generate PDF report
-- [x] Set up MongoDB Atlas DB
-    - [x] Users table
-    - [ ] Entries table
-- [ ] Express backend
-    - [x] Login
-    - [x] Registration
-    - [ ] Create, modify, delete user's entry
-    - [ ] Admin features
-        - [ ] Add, edit, delete users
-        - [ ] Add, edit clients
+        - [ ] Add, delete users
+        - [ ] Add, delete clients
+        - [ ] Add, delete projects
+        - [ ] Add, delete entries
         - [ ] Generate PDF report
 
-### Extra, if possible:
+
+- [x] Set up MongoDB Atlas DB
+    - [x] Users table
+    - [x] Projects table
+    - [x] Entries table
+    - [ ] Clients table
+
+
+- [ ] Express backend
+    - [x] Users
+        - [x] Login
+        - [x] Registration 
+    - [ ] Projects
+        - [x] View projects
+        - [ ] Admin: new project
+        - [ ] Admin: delete projects
+    - [ ] Entries
+        - [x] View your entries
+        - [x] Create your entries
+        - [ ] Delete your entries
+    - [ ] Clients
+        - [ ] Admin: create clients
+        - [ ] Admin: delete clients
+    - [ ] Generate PDF report
 - [ ] 15 minute inactivity timer

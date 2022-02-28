@@ -12,7 +12,7 @@ class Login extends React.Component {
 
         this.state = {
             formRes: 0,
-            userName: ""
+            user: {}
         }
     }
 
@@ -32,17 +32,12 @@ class Login extends React.Component {
                 "password": formData["password"].value
             }
         )
-        .then((res) => { this.setState(
-                { 
-                    formRes: res.status, 
-                    userName: JSON.parse(JSON.stringify(res)).data.name
-                }
-            ) 
+        .then((res) => { 
+            localStorage.setItem("user", JSON.stringify(res.data));
+            localStorage.setItem("loggedIn", 1);
+            window.location.href = "/";
         })
         .catch((err) => { this.setState({ formRes: err.response.status }) });
-
-        localStorage.loggedIn = true;
-        localStorage.username = this.state.userName;
 
     }
 
@@ -52,10 +47,10 @@ class Login extends React.Component {
             <>
                 { this.isLoggedIn() ? <Redirect to="/" /> : "" }
                 <Navigation />
-                <Container style={{ margin: "3rem" }}>
+                <Container>
                     <div className="bg-light p-5 rounded-lg m-3">
                         <h1 className="display-4">Log In</h1>
-                        <p className="lead">By logging in, you will be able to manage projects and timer entries.</p>
+                        <p className="lead">By logging in, you will be able to manage your timer entries.</p>
                         {
                             this.state.formRes === 200 ? <Redirect to="/" /> :
                             this.state.formRes === 400 ? <Alert variant="danger">Incorrect password. Please try again.</Alert> :

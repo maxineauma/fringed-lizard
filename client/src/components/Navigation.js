@@ -19,14 +19,17 @@ class Navigation extends React.Component {
                         <Navbar.Collapse>
                             <Nav>
                                 <Nav.Link href="/">Home</Nav.Link>
+                                { this.isLoggedIn() ? <Nav.Link href="/projects">My Projects</Nav.Link> : "" }
+                                { this.isLoggedIn() ? <Nav.Link href="/timers">My Timers</Nav.Link> : "" }
+                                { this.isLoggedIn() ? <Nav.Link href="/manage">Management</Nav.Link> : "" }
                             </Nav>
                         </Navbar.Collapse>
                         <Navbar.Collapse style={{ justifyContent: "end" }}>
                             <Nav>
                                 {
                                     this.isLoggedIn() ? 
-                                    <Nav><Navbar.Text>Hello, {localStorage.username}! <a href="/signout">Sign Out</a>?</Navbar.Text></Nav> 
-                                    : <><Button variant="outline-success" href="/login">Log in</Button> | <Button variant="outline-danger" style={{ fontWeight: "bold" }} href="/signup">Sign up</Button></>
+                                    <Nav><Navbar.Text>Hello, {JSON.parse(localStorage.user).result.firstName + " " + JSON.parse(localStorage.user).result.lastName}! <a href="/signout">Sign Out</a>?</Navbar.Text></Nav> 
+                                    : <><Nav.Link href="/login">Log in</Nav.Link> | <Nav.Link style={{ fontWeight: "bold" }} href="/signup">Sign up</Nav.Link></>
                                 }
                             </Nav>
                         </Navbar.Collapse>

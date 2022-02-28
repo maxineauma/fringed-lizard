@@ -45,10 +45,10 @@ class Signup extends React.Component {
             <>
                 { this.isLoggedIn() ? <Redirect to="/" /> : "" }
                 <Navigation />
-                <Container style={{ margin: "3rem" }}>
+                <Container>
                     <div className="bg-light p-5 rounded-lg m-3">
                         <h1 className="display-4">Sign Up</h1>
-                        <p className="lead">By signing up, you will be able to manage projects and timer entries.</p>
+                        <p className="lead">By signing up, you will be able to be assigned projects and manage timer entries.</p>
                         {
                             this.state.formRes === 200 ? <Alert variant="success">Sign up successful! You may now <Alert.Link href="/login">log in</Alert.Link>.</Alert> :
                             this.state.formRes === 400 ? <Alert variant="danger">Your passwords do not match. Please try again.</Alert> :
