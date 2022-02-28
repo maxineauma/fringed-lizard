@@ -1,6 +1,12 @@
 # Fringed Lizard
 
 ## Todo: 
+
+- [ ] Code uniformity
+- [ ] Prettify
+- [ ] Make isLoggedIn more secure (ask for email, for example)
+- [ ] Move query functions in `pages` and `components` to central location
+
 ### Important: 
 
 - [ ] React frontend
