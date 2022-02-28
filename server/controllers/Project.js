@@ -29,20 +29,3 @@ export const createProject = async (req, res) => {
     } catch(e) { console.log(e); }
 
 }
-
-export const deleteProject = async (req, res) => {
-
-    const { name } = req.params;
-
-    try {
-
-        const projectExists = await ProjectSchema.findOne({ name });
-        if(!projectExists)
-            return res.sendStatus(409);
-
-        await projectExists.remove();
-        res.sendStatus(200);
-
-    } catch(e) { console.log(e); }
-
-}

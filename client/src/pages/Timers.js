@@ -102,6 +102,12 @@ class Timers extends React.Component {
         
     }
 
+    resetTimer = async() => {
+
+        this.setState({ timerSeconds: 1 });
+
+    }
+
     render() {
 
         return (
@@ -116,7 +122,9 @@ class Timers extends React.Component {
                         <hr/>
 
                         <h2 className="display-6">
-                            New Entry | <Button variant={this.state.timerActive ? "danger" : "success"} className="mr-3" onClick={this.doTimer}>{this.state.timerActive ? "Stop" : "Start"} Timer</Button>
+                            New Entry&nbsp;
+                            <Button className="m-1" variant={this.state.timerActive ? "danger" : "success"} className="mr-3" onClick={this.doTimer}>{this.state.timerActive ? "Stop" : "Start"} Timer</Button> 
+                            <Button className="m-1" variant="primary" onClick={this.resetTimer}>Reset Timer</Button>
                         </h2>
 
                         <Form onSubmit={this.createTimer} className="p-3">
@@ -152,7 +160,7 @@ class Timers extends React.Component {
                                 <tr>
                                     <th>#</th>
                                     <th>Project Name</th>
-                                    <th>Time (Sec.)</th>
+                                    <th>Time (Min.)</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -162,11 +170,11 @@ class Timers extends React.Component {
                                             <tr>
                                                 <td>{Object.values(this.state.timers)[i]["_id"]}</td>
                                                 <td>{Object.values(this.state.timers)[i]["project"]}</td>
-                                                <td>{Object.values(this.state.timers)[i]["timeInSeconds"]}</td>
+                                                <td>{parseFloat(parseInt(Object.values(this.state.timers)[i]["timeInSeconds"]) / 60).toFixed(2)}</td>
                                                 <td>
-                                                    <Button onClick={() => this.deleteTimer(Object.values(this.state.timers)[i]["_id"])}>
+                                                    <a href="#" onClick={() => this.deleteTimer(Object.values(this.state.timers)[i]["_id"])}>
                                                         Delete
-                                                    </Button>
+                                                    </a>
                                                 </td>
                                             </tr>
                                         )

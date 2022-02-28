@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { Form, Row, Col, Button } from "react-bootstrap";
+import { Form, Row, Col, Button, Alert } from "react-bootstrap";
 
 class UserPanel extends React.Component {
 
@@ -10,7 +10,8 @@ class UserPanel extends React.Component {
 
         this.state = {
             users: {},
-            clients: {}
+            clients: {},
+            formRes: 0
         };
 
     }
@@ -44,9 +45,8 @@ class UserPanel extends React.Component {
                 client: formData["client"].value
             }
         )
-        .then((res) => {
-            window.location.reload();
-        });
+        .then((res) => { window.location.reload(); })
+        .catch((err) => { this.setState({ formRes: err.response.status }) });
 
     }
 
@@ -56,6 +56,11 @@ class UserPanel extends React.Component {
 
             <>
                 <Form className="p-3" onSubmit={this.createProject}>
+                    <h4 className="display-8 mb-3">Assign a project to a client/consultant pair.</h4>
+                    {
+                        this.state.formRes === 409 ? <Alert variant="danger"><b>Err:</b> User has already been assigned this project.</Alert> :
+                        ""
+                    }
                     <Row className="mb-3">
                         <Form.Group as={Col} controlId="email">
                             <Form.Label>Assigned Consultant</Form.Label>
@@ -86,13 +91,14 @@ class UserPanel extends React.Component {
 
                     <Form.Group controlId="project" className="mb-3">
                         <Form.Label>Project Name</Form.Label>
-                        <Form.Control placeholder="Provide a suitable, appropriate project name" />
+                        <Form.Control placeholder="Provide the project's name" />
                     </Form.Group>
 
                     <Button type="primary" className="mt-3" type="submit">
                         Assign
                     </Button>
                 </Form>
+
             </>
 
         )

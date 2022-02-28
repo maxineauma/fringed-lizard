@@ -1,8 +1,18 @@
 import React from "react";
 import axios from "axios";
-import { Form, Row, Col, Button } from "react-bootstrap";
+import { Form, Row, Col, Button, Alert } from "react-bootstrap";
 
 class ClientPanel extends React.Component {
+
+    constructor() { 
+
+        super();
+
+        this.state = {
+            formRes: 0
+        };
+
+    }
 
     createClient = async (e) => {
 
@@ -15,9 +25,8 @@ class ClientPanel extends React.Component {
                 email: formData["email"].value
             }
         )
-        .then((res) => {
-            window.location.reload();
-        });
+        .then((res) => { window.location.reload(); })
+        .catch((err) => { this.setState({ formRes: err.response.status }) });
 
     }
 
@@ -27,6 +36,11 @@ class ClientPanel extends React.Component {
 
             <>
                <Form className="p-3" onSubmit={this.createClient}>
+                    <h4 className="display-8 mb-3">Assign a new client.</h4>
+                    {
+                        this.state.formRes === 409 ? <Alert variant="danger"><b>Err:</b> Client already exists.</Alert> :
+                        ""
+                    }
                     <Row>
                         <Form.Group as={Col} controlId="companyName" className="mb-3">
                             <Form.Label>Company Name</Form.Label>

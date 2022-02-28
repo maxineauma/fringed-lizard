@@ -53,9 +53,8 @@ class Login extends React.Component {
                         <p className="lead">By logging in, you will be able to manage your timer entries.</p>
                         {
                             this.state.formRes === 200 ? <Redirect to="/" /> :
-                            this.state.formRes === 400 ? <Alert variant="danger">Incorrect password. Please try again.</Alert> :
-                            this.state.formRes === 409 ? <Alert variant="danger">User with specified email doesn't exist. Please use another.</Alert> :
-                            this.state.formRes === 500 ? <Alert variant="warning">Something went wrong.</Alert> :
+                            this.state.formRes === 400 ? <Alert variant="danger"><b>Err:</b> Incorrect password. Please try again.</Alert> :
+                            this.state.formRes === 409 ? <Alert variant="danger"><b>Err:</b> User with specified email doesn't exist. Please use another.</Alert> :
                             ""
                         }
                         <Container className="p-2">

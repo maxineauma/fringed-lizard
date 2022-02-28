@@ -51,10 +51,9 @@ class Signup extends React.Component {
                         <p className="lead">By signing up, you will be able to be assigned projects and manage timer entries.</p>
                         {
                             this.state.formRes === 200 ? <Alert variant="success">Sign up successful! You may now <Alert.Link href="/login">log in</Alert.Link>.</Alert> :
-                            this.state.formRes === 400 ? <Alert variant="danger">Your passwords do not match. Please try again.</Alert> :
-                            this.state.formRes === 406 ? <Alert variant="danger">Your password is not secure enough, please see requirements below.</Alert> : 
-                            this.state.formRes === 409 ? <Alert variant="danger">User with specified email already exists. Please use another.</Alert> :
-                            this.state.formRes === 500 ? <Alert variant="warning">Something went wrong.</Alert> :
+                            this.state.formRes === 400 ? <Alert variant="danger"><b>Err:</b> Your passwords do not match. Please try again.</Alert> :
+                            this.state.formRes === 406 ? <Alert variant="danger"><b>Err:</b> Your password is not secure enough, please see requirements below.</Alert> : 
+                            this.state.formRes === 409 ? <Alert variant="danger"><b>Err:</b> User with specified email already exists. Please use another.</Alert> :
                             ""
                         }
                         {

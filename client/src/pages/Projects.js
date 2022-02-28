@@ -12,8 +12,7 @@ class Projects extends React.Component {
         super();
 
         this.state = {
-            projects: {},
-            formRes: 0
+            projects: {}
         }
 
     }

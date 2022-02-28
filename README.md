@@ -13,10 +13,10 @@
     - [ ] Admin control panel
         - [ ] Client Panel
             - [x] Create client
-            - [ ] Delete client
+            - [ ] Edit client
         - [ ] Project Panel
             - [x] Create project
-            - [ ] Delete project
+            - [ ] Edit project
         - [ ] Generate PDF report
 
 
@@ -34,13 +34,13 @@
     - [ ] Projects
         - [x] View projects
         - [x] Admin: new project
-        - [ ] Admin: delete projects
+        - [ ] Admin: edit projects
     - [x] Entries
         - [x] View your entries
         - [x] Create your entries
         - [x] Delete your entries
     - [x] Clients
         - [x] Admin: create clients
-        - [ ] Admin: delete clients
+        - [ ] Admin: edit clients
     - [ ] Generate PDF report
 - [ ] 15 minute inactivity timer

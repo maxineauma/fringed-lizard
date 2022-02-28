@@ -1,6 +1,6 @@
 import React from "react";
 import { Navigate as Redirect } from "react-router-dom";
-import { Container } from "react-bootstrap";
+import { Container, Tabs, Tab } from "react-bootstrap";
 
 import Navigation from "../components/Navigation";
 import ProjectPanel from "../components/ProjectPanel";
@@ -26,19 +26,21 @@ class Manage extends React.Component {
 
                         <hr />
 
-                        <Container className="p-2">
-                            <h2 className="display-6">Project Management</h2>
-                            <p className="lead">Assign a new project to a consultant.</p>
-                            <ProjectPanel />
-                        </Container>
+                        <Tabs defaultActiveKey={1}>
+                            <Tab eventKey={1} title="Projects">
+                                <Container className="mt-4">
+                                    <h2 className="display-6">Project Management</h2>
+                                    <ProjectPanel />
+                                </Container>
+                            </Tab>
 
-                        <hr />
-
-                        <Container className="p-2">
-                            <h2 className="display-6">Client Management</h2>
-                            <p className="lead">Assign a new client.</p>
-                            <ClientPanel />
-                        </Container>
+                            <Tab eventKey={2} title="Clients">
+                                <Container className="mt-4">
+                                    <h2 className="display-6">Client Management</h2>
+                                    <ClientPanel />
+                                </Container>
+                            </Tab>
+                        </Tabs>
 
                     </div>
                 </Container>
