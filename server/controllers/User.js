@@ -1,9 +1,5 @@
 import UserSchema from "../schemas/UserSchema.js";
-
-import dotenv from "dotenv";
 import bcrypt from "bcryptjs";
-
-dotenv.config();
 
 const isStrongPass = (pass) => {
 
@@ -46,7 +42,7 @@ export const signup = async (req, res) => {
 
         res.status(200).json({ result }); // HTTP 200 -- OK
 
-    } catch(e) { res.sendStatus(500); console.log(e); }
+    } catch(e) { console.log(e); }
 
 }
 
@@ -66,6 +62,17 @@ export const login = async (req, res) => {
 
         res.status(200).json({ result: userExists }); // HTTP 200 -- OK
 
-    } catch(e) { res.sendStatus(500); console.log(e); }
+    } catch(e) { console.log(e); }
+
+}
+
+export const getUsers = async (req, res) => {
+
+    try {
+
+        const allUsers = await UserSchema.find();
+        res.status(200).json({ allUsers });
+
+    } catch(e) { console.log(e); }
 
 }

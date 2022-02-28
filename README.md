@@ -11,10 +11,12 @@
     - [x] Projects assigned to you
     - [x] Entries viewer/management page
     - [ ] Admin control panel
-        - [ ] Add, delete users
-        - [ ] Add, delete clients
-        - [ ] Add, delete projects
-        - [ ] Add, delete entries
+        - [ ] Client Panel
+            - [x] Create client
+            - [ ] Delete client
+        - [ ] Project Panel
+            - [x] Create project
+            - [ ] Delete project
         - [ ] Generate PDF report
 
 
@@ -22,7 +24,7 @@
     - [x] Users table
     - [x] Projects table
     - [x] Entries table
-    - [ ] Clients table
+    - [x] Clients table
 
 
 - [ ] Express backend
@@ -31,14 +33,14 @@
         - [x] Registration 
     - [ ] Projects
         - [x] View projects
-        - [ ] Admin: new project
+        - [x] Admin: new project
         - [ ] Admin: delete projects
-    - [ ] Entries
+    - [x] Entries
         - [x] View your entries
         - [x] Create your entries
-        - [ ] Delete your entries
-    - [ ] Clients
-        - [ ] Admin: create clients
+        - [x] Delete your entries
+    - [x] Clients
+        - [x] Admin: create clients
         - [ ] Admin: delete clients
     - [ ] Generate PDF report
 - [ ] 15 minute inactivity timer

@@ -7,6 +7,7 @@ import bodyParser from "body-parser";
 import userRoutes from "./routes/userRoutes.js";
 import projectRoutes from "./routes/projectRoutes.js";
 import timerRoutes from "./routes/timerRoutes.js";
+import clientRoutes from "./routes/clientRoutes.js";
 
 const app = express();
 dotenv.config();
@@ -20,6 +21,7 @@ app.use(bodyParser.json());
 app.use('/user', userRoutes);
 app.use('/project', projectRoutes);
 app.use('/timer', timerRoutes);
+app.use('/client', clientRoutes);
 
 app.get('/', (req, res) => {
     res.sendStatus(200);

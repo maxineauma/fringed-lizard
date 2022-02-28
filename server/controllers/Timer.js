@@ -2,14 +2,14 @@ import TimerSchema from "../schemas/TimerSchema.js";
 
 export const getUserTimers = async (req, res) => {
 
-    const { email, date } = req.params;
+    const { email } = req.params;
 
     try {
 
-        const timers = await TimerSchema.find({ "email": email, "date": date });
+        const timers = await TimerSchema.find({ "email": email });
         res.status(200).json({ timers });
 
-    } catch(e) { res.sendStatus(500); console.log(e); }
+    } catch(e) { console.log(e); }
 
 }
 
@@ -22,14 +22,19 @@ export const createTimer = async (req, res) => {
 
     try {
 
-    } catch(e) { res.sendStatus(500); console.log(e); }
+    } catch(e) { console.log(e); }
 
 }
 
 export const deleteTimer = async (req, res) => {
 
+    const { id } = req.params;
+
     try {
 
-    } catch(e) { res.sendStatus(500); console.log(e); }
+        await TimerSchema.deleteOne({ _id: id });
+        res.sendStatus(200);
+
+    } catch(e) { console.log(e); }
 
 }

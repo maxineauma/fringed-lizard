@@ -36,28 +36,6 @@ class Projects extends React.Component {
 
     }
 
-    /*createProject = async () => {
-
-        let userEmail = JSON.parse(localStorage.user).result.email;
-        let userToken = JSON.parse(localStorage.user).token;
-        await axios.post(process.env.REACT_APP_API_URL + "/project", 
-            {
-                email: userEmail,
-                project: "Test Project",
-                client: "Test Client"
-            },
-            {
-                headers: {
-                    "Authorization": `Bearer ${userToken}`
-                },
-            }
-        )
-        .then((res) => {
-            console.log(res.data.newProject);
-        });
-
-    }*/
-
     render() {
 
         return (
@@ -66,7 +44,7 @@ class Projects extends React.Component {
                 <Navigation />
                 <Container>
                     <div className="bg-light p-5 rounded-lg m-3">
-                        <h1 className="display-4">My Projects</h1>
+                        <h1 className="display-4">My Projects🛠️</h1>
                         <p className="lead">Here you may find projects that you're assigned.</p>
 
                         <Table>

@@ -14,8 +14,10 @@ class Timers extends React.Component {
         this.state = {
             timers: {},
             projects: {},
-            date: new Date().toISOString().slice(0, 10),
-            formRes: 0
+
+            timerActive: false,
+            timerSeconds: 1,
+            intervalId: 0,
         }
 
     }
@@ -33,8 +35,7 @@ class Timers extends React.Component {
     listTimers = async () => {
 
         let userEmail = JSON.parse(localStorage.user).result.email;
-        let date = this.state.date;
-        await axios.get(process.env.REACT_APP_API_URL + "/timer/" + userEmail + "/" + date)
+        await axios.get(process.env.REACT_APP_API_URL + "/timer/" + userEmail)
         .then((res) => { this.setState({ timers: res.data.timers }); })
         .catch((err) => { this.setState({ timers: {} }); });
 
@@ -52,7 +53,6 @@ class Timers extends React.Component {
     createTimer = async (e) => {
 
         let userEmail = JSON.parse(localStorage.user).result.email;
-        let currentDate = new Date().toISOString().slice(0, 10);
 
         let formData = e.target;
         e.preventDefault();
@@ -61,7 +61,6 @@ class Timers extends React.Component {
             {
                 email: userEmail,
                 project: formData["project"].value,
-                date: currentDate,
                 time: formData["time"].value
             }
         )
@@ -69,6 +68,38 @@ class Timers extends React.Component {
             window.location.reload();
         });
 
+    }
+
+    deleteTimer = async(id) => {
+
+        await axios.delete(process.env.REACT_APP_API_URL + "/timer/" + id)
+        .then((res) => {
+            window.location.reload();
+        });
+
+    }
+
+    toggleTimer = async () => {
+
+        this.setState({ timerActive: this.state.timerActive ? false : true });
+
+    }
+
+    doTimer = async () => {
+
+        if(!this.state.timerActive) {
+            var interval = setInterval(() => {
+                this.setState({ timerSeconds: this.state.timerSeconds + 1 });
+            }, 1000);
+            this.setState({ intervalId: interval });
+        }
+        else {
+            clearInterval(this.state.intervalId);
+            this.setState({ intervalId: 0 });   
+        }
+
+        return await this.toggleTimer();
+        
     }
 
     render() {
@@ -79,13 +110,16 @@ class Timers extends React.Component {
                 <Navigation />
                 <Container>
                     <div className="bg-light p-5 rounded-lg m-3">
-                        <h1 className="display-4">My Timer Entries</h1>
+                        <h1 className="display-4">My Timer Entries⌛</h1>
                         <p className="lead">Here you may find your timer entries, and enter new ones.</p>
 
                         <hr/>
 
-                        <h2 className="display-6">New Entry</h2>
-                        <Form onSubmit={this.createTimer}>
+                        <h2 className="display-6">
+                            New Entry | <Button variant={this.state.timerActive ? "danger" : "success"} className="mr-3" onClick={this.doTimer}>{this.state.timerActive ? "Stop" : "Start"} Timer</Button>
+                        </h2>
+
+                        <Form onSubmit={this.createTimer} className="p-3">
                             <Row>
                                 <Form.Group as={Col} controlId="project" className="mb-3">
                                     <Form.Label>Project</Form.Label>
@@ -100,9 +134,9 @@ class Timers extends React.Component {
                                     </Form.Select>
                                 </Form.Group>
 
-                                <Form.Group as={Col} controlId="time">
+                                <Form.Group as={Col} controlId="time" className="mb-3">
                                     <Form.Label>Time (Sec.)</Form.Label>
-                                    <Form.Control type="number" placeholder="1"></Form.Control>
+                                    <Form.Control type="number" value={this.state.timerSeconds} disabled></Form.Control>
                                 </Form.Group>
                             </Row>
 
@@ -118,7 +152,6 @@ class Timers extends React.Component {
                                 <tr>
                                     <th>#</th>
                                     <th>Project Name</th>
-                                    <th>Date</th>
                                     <th>Time (Sec.)</th>
                                 </tr>
                             </thead>
@@ -129,8 +162,12 @@ class Timers extends React.Component {
                                             <tr>
                                                 <td>{Object.values(this.state.timers)[i]["_id"]}</td>
                                                 <td>{Object.values(this.state.timers)[i]["project"]}</td>
-                                                <td>{Object.values(this.state.timers)[i]["date"]}</td>
                                                 <td>{Object.values(this.state.timers)[i]["timeInSeconds"]}</td>
+                                                <td>
+                                                    <Button onClick={() => this.deleteTimer(Object.values(this.state.timers)[i]["_id"])}>
+                                                        Delete
+                                                    </Button>
+                                                </td>
                                             </tr>
                                         )
                                     })

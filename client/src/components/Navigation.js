@@ -14,7 +14,7 @@ class Navigation extends React.Component {
             <>
                 <Navbar bg="dark" variant="dark" className="p-4">
                     <Container>
-                        <Navbar.Brand>Fringed Lizard</Navbar.Brand>
+                        <Navbar.Brand>Fringed Lizard 🦎</Navbar.Brand>
                         <Navbar.Toggle />
                         <Navbar.Collapse>
                             <Nav>

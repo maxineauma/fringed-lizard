@@ -5,6 +5,6 @@ const router = express.Router();
 
 router.post("/", createTimer);
 router.delete("/:id", deleteTimer);
-router.get("/:email/:date", getUserTimers);
+router.get("/:email", getUserTimers);
 
 export default router;
