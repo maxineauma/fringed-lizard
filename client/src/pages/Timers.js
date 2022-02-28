@@ -72,7 +72,7 @@ class Timers extends React.Component {
 
     deleteTimer = async(id) => {
 
-        await axios.delete(process.env.REACT_APP_API_URL + "/timer/" + id)
+        await axios.delete(process.env.REACT_APP_API_URL + "/timer/update/" + id)
         .then((res) => {
             window.location.reload();
         });

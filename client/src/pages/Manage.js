@@ -22,7 +22,7 @@ class Manage extends React.Component {
                 <Container>
                     <div className="bg-light p-5 rounded-lg m-3">
                         <h1 className="display-4">Management Panel 🧰</h1>
-                        <p className="lead">Here you may edit users, clients, projects, and entries.</p>
+                        <p className="lead">Here you may manage projects and clients, and generate reports per consultant.</p>
 
                         <hr />
 

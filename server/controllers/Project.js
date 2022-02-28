@@ -29,3 +29,28 @@ export const createProject = async (req, res) => {
     } catch(e) { console.log(e); }
 
 }
+
+export const updateProject = async (req, res) => {
+
+    const { id } = req.params;
+    const { email } = req.body;
+
+    try {
+
+        await ProjectSchema.findOneAndUpdate({ _id: id }, { email });
+        res.sendStatus(200);
+
+    } catch(e) { console.log(e); }
+
+}
+
+export const getProjects = async (req, res) => {
+
+    try {
+
+        const allProjects = await ProjectSchema.find();
+        res.status(200).json({ allProjects });
+
+    } catch(e) { console.log(e); }
+
+}
