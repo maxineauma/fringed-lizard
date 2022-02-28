@@ -24,10 +24,7 @@
         - [x] Project Panel
             - [x] Create project
             - [x] Reassign project
-        - [ ] Generate PDF reports
-            - [ ] Project reports
-            - [ ] Client reports
-            - [ ] Consultant reports            
+        - [ ] Generate PDF reports     
     - [ ] 15 minute inactivity timer
 
 
@@ -53,6 +50,4 @@
     - [x] Clients
         - [x] Admin: create clients
     - [ ] Generate PDF reports
-        - [ ] Project reports
-        - [ ] Client reports
         - [ ] Consultant reports
