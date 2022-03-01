@@ -74,7 +74,7 @@ class Navigation extends React.Component {
                       >
                         {this.state.role}
                       </Badge>{" "}
-                      <a href="/signout">Sign Out</a>?
+                      [ <a href="/signout">Sign Out</a>? ]
                     </Navbar.Text>
                   </Nav>
                 ) : (

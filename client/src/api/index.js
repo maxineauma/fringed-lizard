@@ -1,7 +1,9 @@
 import axios from "axios";
 
-const API = axios.create({
+const API = axios.create({ baseURL: process.env.REACT_APP_API_URL });
+const fileAPI = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
+  responseType: "blob",
 });
 
 /* LIST FUNCTIONS */
@@ -27,3 +29,4 @@ export const handleSignup = async (formData) => API.post(`/user/signup`, formDat
 export const getUserName = async (id) => API.get(`/user/${id}/name`);
 export const getUserEmail = async (id) => API.get(`/user/${id}/email`);
 export const getUserRole = async (id) => API.get(`/user/${id}/role`);
+export const getUserReport = async (id) => fileAPI.get(`/user/${id}`);

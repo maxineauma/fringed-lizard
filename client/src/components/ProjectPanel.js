@@ -166,7 +166,10 @@ class UserPanel extends React.Component {
                     <option
                       value={Object.values(this.state.projects)[i]["_id"]}
                     >
-                      {Object.values(this.state.projects)[i]["project"]}
+                      {Object.values(this.state.projects)[i]["project"] +
+                        " (Assigned to: " +
+                        Object.values(this.state.projects)[i]["email"] +
+                        ")"}
                     </option>
                   );
                 })}

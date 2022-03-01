@@ -5,6 +5,7 @@ import { Container, Tabs, Tab } from "react-bootstrap";
 import Navigation from "../components/Navigation";
 import ProjectPanel from "../components/ProjectPanel";
 import ClientPanel from "../components/ClientPanel";
+import UserPanel from "../components/UserPanel";
 import { getUserRole } from "../api";
 
 class Manage extends React.Component {
@@ -58,6 +59,13 @@ class Manage extends React.Component {
                 <Container className="mt-4">
                   <h2 className="display-6">Client Management</h2>
                   <ClientPanel />
+                </Container>
+              </Tab>
+
+              <Tab eventKey={3} title="Consultants">
+                <Container className="mt-4">
+                  <h2 className="display-6">Consultant Reports</h2>
+                  <UserPanel />
                 </Container>
               </Tab>
             </Tabs>

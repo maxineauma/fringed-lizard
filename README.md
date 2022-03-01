@@ -15,7 +15,7 @@
 
 ### Important: 
 
-- [ ] React frontend
+- [x] React frontend
     - [x] Home page
     - [x] Login page
     - [x] Registration page
@@ -28,8 +28,7 @@
         - [x] Project Panel
             - [x] Create project
             - [x] Reassign project
-        - [ ] Generate PDF reports     
-    - [ ] 15 minute inactivity timer
+        - [x] Generate PDF reports
 
 
 - [x] Set up MongoDB Atlas DB
@@ -39,7 +38,7 @@
     - [x] Clients table
 
 
-- [ ] Express backend
+- [x] Express backend
     - [x] Users
         - [x] Login
         - [x] Registration 
@@ -53,5 +52,5 @@
         - [x] Delete your entries
     - [x] Clients
         - [x] Admin: create clients
-    - [ ] Generate PDF reports
-        - [ ] Consultant reports
+    - [x] Generate PDF reports
+        - [x] Consultant reports

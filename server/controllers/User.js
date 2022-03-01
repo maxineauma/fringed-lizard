@@ -1,5 +1,9 @@
 import UserSchema from "../schemas/UserSchema.js";
+import ProjectSchema from "../schemas/ProjectSchema.js";
+import TimerSchema from "../schemas/TimerSchema.js";
+
 import bcrypt from "bcryptjs";
+import pdf from "html-pdf-node";
 
 const isStrongPass = (pass) => {
   // Must be at least 8 characters
@@ -105,6 +109,77 @@ export const getUserRoleById = async (req, res) => {
   try {
     const userExists = await UserSchema.findById(id).hint("_id_");
     res.status(200).json({ role: userExists.role });
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export const getUserReportById = async (req, res) => {
+  const { id } = req.params;
+  let options = { format: "A4" };
+
+  try {
+    const userExists = await UserSchema.findById(id).hint("_id_");
+    const userProjects = await ProjectSchema.find({ email: userExists.email });
+    const userEntries = await TimerSchema.find({ email: userExists.email });
+
+    let projects =
+      "<table border=1 cellpadding=20><tr><td><b>Project</b></td><td><b>Client</b></td></tr>";
+    for (let x = 0; x < userProjects.length; x++) {
+      projects +=
+        "<tr>" +
+        "<td>" +
+        userProjects[x]["project"] +
+        "</td>" +
+        "<td>" +
+        userProjects[x]["client"] +
+        "</td>" +
+        "</tr>";
+    }
+    projects += "</table>";
+
+    let entries =
+      "<table border=1 cellpadding=20><tr><td><b>Project</b></td><td><b>Time (Min.)</b></td></tr>";
+    for (let x = 0; x < userEntries.length; x++) {
+      entries +=
+        "<tr>" +
+        "<td>" +
+        userEntries[x]["project"] +
+        "</td>" +
+        "<td>" +
+        parseFloat(parseInt(userEntries[x]["timeInSeconds"]) / 60).toFixed(5) +
+        "</td>" +
+        "</tr>";
+    }
+    entries += "</table>";
+
+    let file = {
+      content:
+        "<body style='padding:20px; font-family:Verdana;'>" +
+        "<h1>User Report</h1>" +
+        "<p>Report generated " +
+        new Date() +
+        "</p>" +
+        "<hr/>" +
+        "<h2>" +
+        userExists.firstName +
+        " " +
+        userExists.lastName +
+        "<br/>(" +
+        userExists.email +
+        ")</h2>" +
+        "<hr/>" +
+        "<h3>Assigned Projects</h3>" +
+        projects +
+        "<h3>Project Timer Entries</h3>" +
+        entries +
+        "</body>",
+    };
+    await pdf.generatePdf(file, options).then((pdfBuffer) => {
+      res.set("Content-Type", "application/octet-stream");
+      res.set("Content-Disposition", 'attachment;filename="report.pdf"');
+      res.status(200).send(pdfBuffer);
+    });
   } catch (e) {
     console.log(e);
   }
