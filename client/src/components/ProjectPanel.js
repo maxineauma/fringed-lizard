@@ -114,7 +114,11 @@ class UserPanel extends React.Component {
               <Form.Select>
                 {Object.values(this.state.clients).map((u, i) => {
                   return (
-                    <option>
+                    <option
+                      value={
+                        Object.values(this.state.clients)[i]["companyName"]
+                      }
+                    >
                       {Object.values(this.state.clients)[i]["companyName"] +
                         " (" +
                         Object.values(this.state.clients)[i]["email"] +
