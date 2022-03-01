@@ -2,12 +2,16 @@
 
 ## Todo: 
 
-- [ ] Code uniformity
-- [ ] Prettify
-- [ ] Make isLoggedIn more secure (ask for email, for example)
-- [ ] Move query functions in `pages` and `components` to central location
-- [ ] Bring back user roles, store deep in `localStorage` 
-- [ ] Email validation on login and signup forms -- https://regex101.com/r/SsUQG1/1
+- [x] Code uniformity
+    - [x] Client
+    - [x] Server
+- [x] Prettify
+    - [x] Client
+    - [x] Server
+- [x] Make isLoggedIn more secure
+- [x] Move client query functions to central location
+- [x] Bring back user roles
+- [x] Email validation on login and signup forms
 
 ### Important: 
 

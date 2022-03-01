@@ -18,15 +18,15 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(bodyParser.json());
 
-app.use('/user', userRoutes);
-app.use('/project', projectRoutes);
-app.use('/timer', timerRoutes);
-app.use('/client', clientRoutes);
+app.use("/user", userRoutes);
+app.use("/project", projectRoutes);
+app.use("/timer", timerRoutes);
+app.use("/client", clientRoutes);
 
-app.get('/', (req, res) => {
-    res.sendStatus(200);
+app.get("/", (req, res) => {
+  res.sendStatus(200);
 });
 
 mongoose.connect(DB_URL).then(() => {
-    app.listen(PORT, () => console.log(`Server listening on port ${PORT}.`))
+  app.listen(PORT, () => console.log(`Server listening on port ${PORT}.`));
 });
