@@ -7,7 +7,7 @@
 - [ ] Make isLoggedIn more secure (ask for email, for example)
 - [ ] Move query functions in `pages` and `components` to central location
 - [ ] Bring back user roles, store deep in `localStorage` 
-- [ ] Email validation on login and signup forms
+- [ ] Email validation on login and signup forms -- https://regex101.com/r/SsUQG1/1
 
 ### Important: 
 

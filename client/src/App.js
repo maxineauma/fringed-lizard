@@ -2,7 +2,7 @@ import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import Home from "./pages/Home";
 
@@ -29,11 +29,11 @@ const App = () => {
         <Route path="/timers" element={<Timers />} exact />
 
         <Route path="/manage" element={<Manage />} exact />
-        
+
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </Router>
   );
-}
+};
 
 export default App;
