@@ -1,5 +1,18 @@
 # Fringed Lizard
 
+## Pre-installation
+* This depends on: [<a href="https://git-scm.com/download/win">latest Git</a>] [<a href="https://nodejs.org/en/">latest Node.js</a>].
+
+## Installation
+* Clone this repository with:<br/>
+`git clone https://github.com/maxsaystransrights/fringed-lizard.git`
+* Install both the server and client requirements by navigating to both `client` and `server` directories, and running `npm install`.
+* Create an `.env` file in both `client` and `server`.
+    * `./server/.env` should contain a connection string to a MongoDB database as `DB_URL`, and a port on which to run the backend as `PORT`.
+    * `./client/.env` should contain a URL to your backend as `REACT_APP_API_URL`.
+* Run `npm start` from both `server` and `client`.
+* Have fun! 
+
 ## Todo: 
 
 - [x] Code uniformity
